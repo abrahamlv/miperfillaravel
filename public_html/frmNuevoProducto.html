@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- estructura para llamar a una api -->
+    <script type="text/javascript">
+
+        function guardar() {
+
+            $.ajax(
+                {
+                    method: "POST",
+                    url: "http://dss.com.uno/api/v1/productos",
+                    data: {
+                        codigo: $("#txtCodigo").val(),
+                        nombre: $("#txtNombre").val(),
+                        descripcion: $("#txtDescripcion").val(),
+                        precio: $("#txtPrecio").val(),
+                        cantidad: $("#txtCantidad").val()
+                    }
+                }
+            ).done(function (response) {
+
+                $("#message").text("El producto se registró satisfactoriamente");
+            });
+
+        }
+
+
+    </script>
+
+    <label for="txtCodigo">Código</label>
+    <input type="text" name="txtCodigo" id="txtCodigo">
+    <br>
+    <label for="txtNombre">Nombre</label>
+    <input type="text" name="txtNombre" id="txtNombre">
+    <br>
+    <label for="txtDescripcion">Descripción</label>
+    <input type="text" name="txtDescripcion" id="txtDescripcion">
+    <br>
+    <label for="txtPrecio">Precio</label>
+    <input type="text" name="txtPrecio" id="txtPrecio">
+    <br>
+    <label for="txtCantidad">Cantidad</label>
+    <input type="text" name="txtCantidad" id="txtCantidad">
+    <br>
+    <button onclick="guardar()">Guardar</button>
+
+
+    <label for="" id="message"></label>
+
+</body>
+
+</html>
